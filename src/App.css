@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+
+
+
+
+.section-container {
+  @apply max-w-full mx-auto xl:px-24 px-4; /* Tailwind equivalents for your styles */
+}
+
+.subtitle {
+  @apply uppercase tracking-wide font-medium text-red text-lg; /* Utilize Tailwind classes */
+}
+
+.title {
+  @apply text-4xl md:text-5xl font-bold my-2 md:leading-snug leading-snug; /* Tailwind equivalents for your styles */
+}
+.heartStar{
+  border-radius: 0px 28px 0px 28px;
+  -webkit-border-radius: 0px 28px 0px 28px;
+  -moz-border-radius: 0px 28px 0px 28px;
+  -ms-border-radius: 0px 28px 0px 28px;
+  -o-border-radius: 0px 28px 0px 28px;
+}
