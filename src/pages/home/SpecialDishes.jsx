@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { FaHeart } from "react-icons/fa";
 import Cards from "../../components/Cards";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
 const SampleNextArrow = (props) => {
   const { className, style, onClick } = props;
@@ -40,19 +42,17 @@ const SpecialDishes = () => {
       .then((res) => res.json())
       .then((data) => {
         const specials = data.filter((item) => item.category === "popular");
-        // console.log(specials);
+        // console.log(specials)
         setRecipes(specials);
       });
   }, []);
-
-  // Settings
   const settings = {
     dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    initialSlide: 0,
+    initialSlide: 1,
     responsive: [
       {
         breakpoint: 1024,
@@ -64,7 +64,7 @@ const SpecialDishes = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 970,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -72,7 +72,7 @@ const SpecialDishes = () => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 576,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -83,31 +83,24 @@ const SpecialDishes = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
   return (
-    <div className="section-container my-20 relative">
+    <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 my-20 relative">
       <div className="text-left">
-        <p className="text-red uppercase tracking-wide font-medium text-lg">
-          Special Dishes
-        </p>
-        <h2 className="text-4xl md:text-5xl font-bold my-2 md:leading-snug leading-snug lg:w-[520px">
-          Standout Dishes From Our Menu
-        </h2>
+        <p className="subtitle">Customer Favorites</p>
+        <h2 className="title">Popular Catagories</h2>
       </div>
-
-      {/* Arrow btn */}
-      <div className="md:absolute right-3 top-8 mb-10 md: mr-24 ">
+      <div className="md:absolute right-3 top-8 mb-10 md:mr-24">
         <button
           onClick={() => slider?.current?.slickPrev()}
-          className="btn p-2 rounded-full ml-5"
+          className=" btn p-2 rounded-full ml-5"
         >
-          <FaAngleLeft className="w-8 h-8 p-1" />
+          <FaAngleLeft className=" h-8 w-8 p-1" />
         </button>
         <button
+          className="bg-green btn p-2 rounded-full ml-5"
           onClick={() => slider?.current?.slickNext()}
-          className="btn p-2 rounded-full ml-5 bg-green"
         >
-          <FaAngleRight className="w-8 h-8 p-1" />
+          <FaAngleRight className=" h-8 w-8 p-1" />
         </button>
       </div>
 
@@ -117,7 +110,7 @@ const SpecialDishes = () => {
         className="overflow-hidden mt-10 space-x-5"
       >
         {recipes.map((item, i) => (
-          <Cards key={i} item={item} />
+          <Cards item={item} key={i} />
         ))}
       </Slider>
     </div>
